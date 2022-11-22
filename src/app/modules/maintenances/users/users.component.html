@@ -1,0 +1,71 @@
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
+</ng-template>
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+  <form nz-form [formGroup]="validateForm">
+    <input nz-input formControlName="id" type="hidden" id="id">
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
+        <input nz-input formControlName="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="email" nzRequired>E-mail</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorEmail">
+        <input nz-input formControlName="email" type="email" id="email">
+        <ng-template #errorEmail let-control>
+          <ng-container *ngIf="control.hasError('required')">¡Este campo es requerido!</ng-container>
+          <ng-container *ngIf="control.hasError('email')">
+            La entrada no es válida Correo electrónico
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="password" [nzRequired]="!editFrom">Contraseña</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
+        <input nz-input formControlName="password" type="password" id="password">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="confirmPassword" [nzRequired]="!editFrom">Confirmar Contraseña</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input formControlName="confirmPassword" type="password" id="confirmPassword">
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">¡Por favor, confirme su contraseña!</ng-container>
+          <ng-container *ngIf="control.hasError('confirm')">
+            ¡Dos contraseñas que ingresas son inconsistentes!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+  </form>
+  </ng-container>
+</nz-modal>
+
+<nz-card nzTitle="Lista de Usuarios" [nzExtra]="extraTemplate">
+    <nz-table #userTable [nzData]="userSet">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Estado</th>
+            <th [nzAlign]="'center'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userTable.data">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td> <nz-switch [(ngModel)]="user.active"(ngModelChange)="onChangeStatus($event , user.id)" ></nz-switch> </td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(user.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>
