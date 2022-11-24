@@ -24,6 +24,33 @@ export const ROUTES: SideNavInterface[] = [
                 iconTheme: 'outline',
                 submenu: [],
                 user: false
+            },
+            { 
+                path: 'maintenances/businesses',
+                title: 'Empresas', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                user: false
+            },
+            { 
+                path: 'maintenances/sedes',
+                title: 'Sedes', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                user: false
+            },
+            { 
+                path: 'maintenances/areas',
+                title: 'Areas', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                user: false
             }
         ],
         user: false

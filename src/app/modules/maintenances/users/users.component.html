@@ -1,6 +1,7 @@
 <ng-template #extraTemplate>
   <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
 </ng-template>
+
 <nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <ng-container *nzModalContent>
   <form nz-form [formGroup]="validateForm">

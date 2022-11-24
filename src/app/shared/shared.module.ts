@@ -14,6 +14,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 const antdModule = [
     NzButtonModule,
@@ -24,7 +25,8 @@ const antdModule = [
     NzSwitchModule,
     NzModalModule,
     NzFormModule,
-    NzInputModule
+    NzInputModule,
+    NzSelectModule
 ]
 
 @NgModule({

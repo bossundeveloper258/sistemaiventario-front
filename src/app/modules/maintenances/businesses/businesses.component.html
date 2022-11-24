@@ -1,0 +1,59 @@
+<ng-template #extraTemplate>
+    <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
+</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+  <form nz-form [formGroup]="validateForm">
+    <input nz-input formControlName="id" type="hidden" id="id">
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="ruc" nzRequired>Ruc</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorRuc">
+        <input nz-input formControlName="ruc" type="text" id="ruc">
+        <ng-template #errorRuc let-control>
+          <ng-container *ngIf="control.hasError('required')">{{constant.MESSAGES.REQUIRED}}</ng-container>
+          <ng-container *ngIf="control.hasError('maxlength')">Maximo debe tener 11 digitos</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <input nz-input formControlName="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="address" nzRequired>Dirección</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <textarea formControlName="address" nz-input rows="3"></textarea>
+      </nz-form-control>
+    </nz-form-item >
+  </form>
+  </ng-container>
+</nz-modal>
+
+<nz-card nzTitle="Lista de Empresas" [nzExtra]="extraTemplate">
+    <nz-table #businessTable [nzData]="businessSet">
+        <thead>
+          <tr>
+            <th>Ruc</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th [nzAlign]="'center'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of businessTable.data">
+            <td>{{b.ruc}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.address}}</td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

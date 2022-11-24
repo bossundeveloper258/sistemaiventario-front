@@ -1,0 +1,80 @@
+<ng-template #extraTemplate>
+    <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
+</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+  <form nz-form [formGroup]="validateForm">
+    <input nz-input formControlName="id" type="hidden" id="id">
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="serie">Serie</nz-form-label>
+        <nz-form-control [nzSm]="18" [nzXs]="24" >
+          <input nz-input formControlName="serie" type="text" id="serie" [disabled]="true">
+        </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
+      <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <input nz-input formControlName="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Dirección</nz-form-label>
+      <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <textarea formControlName="address" nz-input rows="3"></textarea>
+      </nz-form-control>
+    </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sede_type" nzRequired>Tipo</nz-form-label>
+        <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+            <nz-select name="select-validate" formControlName="sede_type">
+                <nz-option [nzValue]="type.id" [nzLabel]="type.description" *ngFor="let type of sedeTypes"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="business_id" nzRequired>Empresa</nz-form-label>
+        <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+            <nz-select name="select-validate" formControlName="business_id">
+                <nz-option [nzValue]="b.id" [nzLabel]="b.name" *ngFor="let b of businessList"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item >
+
+  </form>
+  </ng-container>
+</nz-modal>
+
+<nz-card nzTitle="Lista de Sedes" [nzExtra]="extraTemplate">
+    <nz-table #sedeTable [nzData]="sedeSet">
+        <thead>
+          <tr>
+            <th>Serie</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Empresa</th>
+            <th>Tipo</th>
+            <th [nzAlign]="'center'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of sedeTable.data">
+            <td>{{b.serie + '0000' + b.id}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.address}}</td>
+            <td>{{b.business.name}}</td>
+            <td>{{b.sede_type.description }}</td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

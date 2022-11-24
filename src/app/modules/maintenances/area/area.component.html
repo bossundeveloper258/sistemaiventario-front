@@ -1,0 +1,63 @@
+<ng-template #extraTemplate>
+    <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
+</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+  <form nz-form [formGroup]="validateForm">
+    <input nz-input formControlName="id" type="hidden" id="id">
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
+      <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <input nz-input formControlName="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    
+
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="business_id" nzRequired>Empresa</nz-form-label>
+        <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+            <nz-select name="select-validate" formControlName="business_id" (ngModelChange)="onChangeBusiness($event)">
+                <nz-option [nzValue]="b.id" [nzLabel]="b.name" *ngFor="let b of businessList"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sede_id" nzRequired>Sede</nz-form-label>
+        <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+            <nz-select name="select-validate" formControlName="sede_id">
+                <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of sedeList"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item >
+
+  </form>
+  </ng-container>
+</nz-modal>
+
+<nz-card nzTitle="Lista de Areas" [nzExtra]="extraTemplate">
+    <nz-table #areaTable [nzData]="areaSet">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Empresa</th>
+            <th>Sede</th>
+            <th [nzAlign]="'center'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of areaTable.data">
+            <td>{{b.name}}</td>
+            <td>{{b.business.name}}</td>
+            <td>{{b.sede.name }}</td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

@@ -51,6 +51,14 @@ export class UsersComponent implements OnInit {
     this.isVisible = true;
     this.validateForm.get("id").setValue(0);
     this.editFrom = false;
+
+    this.validateForm.patchValue({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+
     this.validateForm.get('password').setValidators([Validators.required]);
     this.validateForm.get('confirmPassword').setValidators([Validators.required]);
   }
