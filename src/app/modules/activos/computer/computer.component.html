@@ -1,0 +1,38 @@
+<ng-template #extraTemplate>
+    <a nz-button nzType="primary" [routerLink]="'new'">Nuevo</a>
+</ng-template>
+
+<nz-card nzTitle="Lista de Computos" [nzExtra]="extraTemplate">
+    <nz-table #computersTable [nzData]="computersSet" [nzScroll]="{ x: '1400px' }">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Nº serie</th>
+            <th>Fec. de ini. garantia</th>
+            <th>Fec. de exp. garantia</th>
+            <th>CECO</th>
+            <th>Usuario</th>
+            <th>Estado</th>
+            <th nzRight [nzAlign]="'center'" [nzWidth]="'100px'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of computersTable.data">
+            <td>{{b.name}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td>{{b.name }}</td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

@@ -12,5 +12,9 @@ export const CommonLayout_ROUTES: Routes = [
     {
         path: 'negocios',
         loadChildren: () => import('../../modules/negocios/negocios.module').then(m => m.NegociosModule),
+    },
+    {
+        path: 'activos',
+        loadChildren: () => import('../../modules/activos/activos.module').then(m => m.ActivosModule),
     }
 ];

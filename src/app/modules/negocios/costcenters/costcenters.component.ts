@@ -54,7 +54,7 @@ export class CostcentersComponent implements OnInit {
   }
 
   public onNew(): void{
-    this.titleModal = "Nuevo Area";
+    this.titleModal = "Nuevo Centro de Costo";
     this.isVisible = true;
     this.validateForm.get("id").setValue(0);
     this.validateForm.patchValue({
@@ -71,7 +71,7 @@ export class CostcentersComponent implements OnInit {
   public onEdit(bId: number): void{
     this.costcenterService.edit(bId).subscribe(
       (res) => {
-        this.titleModal = "Editar Area";
+        this.titleModal = "Editar Centro de Costo";
         this.isVisible = true;
         this.validateForm.patchValue({
           id: res.id,

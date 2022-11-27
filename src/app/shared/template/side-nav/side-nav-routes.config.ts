@@ -91,7 +91,7 @@ export const ROUTES: SideNavInterface[] = [
         iconTheme: 'outline',
         submenu: [
             { 
-                path: 'maintenances/areas',
+                path: 'activos/computers',
                 title: 'Computo', 
                 iconType: '', 
                 icon: '',

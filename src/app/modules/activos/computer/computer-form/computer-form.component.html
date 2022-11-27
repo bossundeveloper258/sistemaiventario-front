@@ -1,0 +1,41 @@
+<nz-card nzTitle="Computo">
+    <form nz-form [formGroup]="validateForm">
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzFor="typeComputer_id" nzRequired>Tipo</nz-form-label>
+                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                <nz-select name="select-validate" formControlName="typeComputer_id">
+                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of typeComputerList"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item >
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzFor="brand_id" nzRequired>Marca</nz-form-label>
+                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                <nz-select name="select-validate" formControlName="brand_id">
+                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of brandList"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item >
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-label nzFor="model_id" nzRequired>Modelo</nz-form-label>
+                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                <nz-select name="select-validate" formControlName="model_id">
+                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of modelList"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item >
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+</nz-card>
