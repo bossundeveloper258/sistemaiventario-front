@@ -40,7 +40,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(USER_AUTH_API_URL + '/login', { email: username, password })
+        return this.http.post<any>(USER_AUTH_API_URL + '/login', { gpid: username, password })
         .pipe(
             map(t => {
                 if (t) {
@@ -81,8 +81,8 @@ export class AuthenticationService {
         .pipe(
             map((user: any) => {
               if (user) {
-                this.storageService.setUser(user);
-                this.currentUserSubject.next(user);
+                this.storageService.setUser(user.data);
+                this.currentUserSubject.next(user.data);
               } else {
                 this.logout();
               }

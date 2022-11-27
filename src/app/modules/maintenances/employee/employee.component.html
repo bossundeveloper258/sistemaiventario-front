@@ -1,0 +1,91 @@
+<ng-template #extraTemplate>
+    <button nz-button nzType="primary" (click)="onNew()">Nuevo</button>
+</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="titleModal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+  <form nz-form [formGroup]="validateForm">
+    <input nz-input formControlName="id" type="hidden" id="id">
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="gpid" nzRequired>GPID</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorGPID">
+        <input nz-input formControlName="gpid" type="text" id="gpid" maxlength="8">
+        <ng-template #errorGPID let-control>
+          <ng-container *ngIf="control.hasError('required')">{{constant.MESSAGES.REQUIRED}}</ng-container>
+          <ng-container *ngIf="control.hasError('minlength')">Debe tener 8 digitos</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+        <input nz-input formControlName="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="10" [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorEmail">
+            <nz-input-group >
+                <input type="text" nz-input formControlName="email">
+            </nz-input-group>
+            <ng-template #errorEmail let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                    {{constant.MESSAGES.REQUIRED}}
+                </ng-container>
+                <ng-container *ngIf="control.hasError('email')">
+                  La entrada no es válida Correo electrónico
+                </ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="job" nzRequired>Cargo</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+          <input nz-input formControlName="job" type="text" id="job">
+        </nz-form-control>
+    </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
+        <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="cost_center_id" nzRequired>Centro de Costo</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+            <nz-select name="select-validate" formControlName="cost_center_id">
+                <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of costCenterList"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item >
+
+  </form>
+  </ng-container>
+</nz-modal>
+
+<nz-card nzTitle="Lista de Usuarios" [nzExtra]="extraTemplate">
+    <nz-table #employeeTable [nzData]="employeeSet">
+        <thead>
+          <tr>
+            <th>GPID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Centro de Costo</th>
+            <th [nzAlign]="'center'">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of employeeTable.data">
+            <td>{{b.gpid}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.email}}</td>
+            <td>{{b.job}}</td>
+            <td>{{b.cost_center.name}}</td>
+            <td [nzAlign]="'center'">
+              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+    </nz-table>
+</nz-card>

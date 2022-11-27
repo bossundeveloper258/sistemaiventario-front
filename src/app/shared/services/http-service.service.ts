@@ -45,7 +45,6 @@ export class HttpServiceService {
 
   private handleError(httpError: HttpErrorResponse): Observable<any>
   {
-    console.log(httpError, "httpErrorhttpError")
     if(httpError.error instanceof ErrorEvent){
       return throwError(httpError.error.message);
     }else{

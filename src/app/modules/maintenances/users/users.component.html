@@ -6,12 +6,14 @@
   <ng-container *nzModalContent>
   <form nz-form [formGroup]="validateForm">
     <input nz-input formControlName="id" type="hidden" id="id">
+    <!-- input -->
     <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
         <input nz-input formControlName="name" type="text" id="name">
       </nz-form-control>
     </nz-form-item >
+    <!-- input -->
     <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="email" nzRequired>E-mail</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorEmail">
@@ -24,12 +26,27 @@
         </ng-template>
       </nz-form-control>
     </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="gpid" nzRequired>GPID</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorGPID">
+        <input nz-input formControlName="gpid" type="text" id="gpid">
+        <ng-template #errorGPID let-control>
+          <ng-container *ngIf="control.hasError('required')">¡Este campo es requerido!</ng-container>
+          <ng-container *ngIf="control.hasError('minlength')">
+            Minimo 8 digitos
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
     <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="password" [nzRequired]="!editFrom">Contraseña</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
         <input nz-input formControlName="password" type="password" id="password">
       </nz-form-control>
     </nz-form-item >
+    <!-- input -->
     <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="confirmPassword" [nzRequired]="!editFrom">Confirmar Contraseña</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
@@ -46,11 +63,11 @@
   </ng-container>
 </nz-modal>
 
-<nz-card nzTitle="Lista de Usuarios" [nzExtra]="extraTemplate">
+<nz-card nzTitle="Lista de Field services" [nzExtra]="extraTemplate">
     <nz-table #userTable [nzData]="userSet">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>GPID</th>
             <th>Nombre</th>
             <th>Email</th>
             <th>Estado</th>
@@ -59,7 +76,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of userTable.data">
-            <td>{{user.id}}</td>
+            <td>{{user.gpid}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td> <nz-switch [(ngModel)]="user.active"(ngModelChange)="onChangeStatus($event , user.id)" ></nz-switch> </td>

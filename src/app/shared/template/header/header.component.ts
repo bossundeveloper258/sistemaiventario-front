@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { StorageService } from '../../services/storage.service';
 import { ThemeConstantService } from '../../services/theme-constant.service';
 
 @Component({
@@ -14,10 +15,16 @@ export class HeaderComponent{
     isFolded : boolean;
     isExpand : boolean;
 
+    userCurrent: any;
+
     constructor( 
         private themeService: ThemeConstantService,
-        private authenticationService: AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService,
+        private storageService: StorageService
+    ) {
+        this.userCurrent =  JSON.parse(this.storageService.getUser());
+        console.log(this.userCurrent)
+    }
 
     ngOnInit(): void {
         this.themeService.isMenuFoldedChanges.subscribe(isFolded => this.isFolded = isFolded);

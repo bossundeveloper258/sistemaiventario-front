@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FormValidatorCustom } from 'src/app/shared/utility/formValidation';
 import { validForm } from 'src/app/shared/utility/functions';
 import { Observable } from 'rxjs';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-users',
@@ -22,12 +23,14 @@ export class UsersComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private fb: FormBuilder,
-    private formValidatorCustom: FormValidatorCustom
+    private formValidatorCustom: FormValidatorCustom,
+    private modalService: NzModalService,
   ) {
     this.validateForm = this.fb.group({
       id: [null],
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
+      gpid: [null, [Validators.minLength(8), Validators.required]],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],
     },
@@ -47,7 +50,7 @@ export class UsersComponent implements OnInit {
   }
 
   public onNew():void{
-    this.titleModal = "Nuevo Usuario";
+    this.titleModal = "Nuevo Field service";
     this.isVisible = true;
     this.validateForm.get("id").setValue(0);
     this.editFrom = false;
@@ -55,6 +58,7 @@ export class UsersComponent implements OnInit {
     this.validateForm.patchValue({
       name: "",
       email: "",
+      gpid: "",
       password: "",
       confirmPassword: "",
     });
@@ -73,6 +77,7 @@ export class UsersComponent implements OnInit {
       id: this.validateForm.get("id").value,
       name: this.validateForm.get("name").value,
       email: this.validateForm.get("email").value,
+      gpid: this.validateForm.get("gpid").value,
       password: this.validateForm.get("password").value,
       password_confirmation: this.validateForm.get("confirmPassword").value,
     }
@@ -90,6 +95,9 @@ export class UsersComponent implements OnInit {
         (res) => {
           this.isVisible = false;
           this.listUsers();
+        },
+        (error)=> {
+          this.modalService.error({ nzContent: error.message});
         }
       )
     }
@@ -98,13 +106,13 @@ export class UsersComponent implements OnInit {
   public onEdit(userId: number): void{
     this.usersService.edit(userId).subscribe(
       (res) => {
-        console.log(res);
-        this.titleModal = "Editar Usuario";
+        this.titleModal = "Editar Field service";
         this.isVisible = true;
         this.validateForm.patchValue({
           id: res.id,
           name: res.name,
           email: res.email,
+          gpid: res.gpid,
         });
         this.editFrom = true;
         this.validateForm.get('password').clearValidators();

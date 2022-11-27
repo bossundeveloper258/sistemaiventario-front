@@ -7,7 +7,7 @@ export const ROUTES: SideNavInterface[] = [
         iconTheme: 'outline',
         icon: 'dashboard',
         submenu: [],
-        user: true
+        role:[1,2]
     },
     {
         path: '',
@@ -18,13 +18,32 @@ export const ROUTES: SideNavInterface[] = [
         submenu: [
             { 
                 path: 'maintenances/users',
+                title: 'Field service', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                role:[1]
+            },
+            { 
+                path: 'maintenances/employees',
                 title: 'Usuarios', 
                 iconType: '', 
                 icon: '',
                 iconTheme: 'outline',
                 submenu: [],
-                user: false
-            },
+                role:[1,2]
+            }
+        ],
+        role:[1,2]
+    },
+    {
+        path: '',
+        title: 'Negocios',
+        iconType: 'nzIcon',
+        iconTheme: 'outline',
+        icon: 'dashboard',
+        submenu: [
             { 
                 path: 'maintenances/businesses',
                 title: 'Empresas', 
@@ -32,7 +51,7 @@ export const ROUTES: SideNavInterface[] = [
                 icon: '',
                 iconTheme: 'outline',
                 submenu: [],
-                user: false
+                role:[1]
             },
             { 
                 path: 'maintenances/sedes',
@@ -41,7 +60,7 @@ export const ROUTES: SideNavInterface[] = [
                 icon: '',
                 iconTheme: 'outline',
                 submenu: [],
-                user: false
+                role:[1]
             },
             { 
                 path: 'maintenances/areas',
@@ -50,18 +69,37 @@ export const ROUTES: SideNavInterface[] = [
                 icon: '',
                 iconTheme: 'outline',
                 submenu: [],
-                user: false
+                role:[1]
+            },
+            { 
+                path: 'negocios/costcenters',
+                title: 'Centro Costo', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                role:[1]
             }
         ],
-        user: false
+        role:[1]
     },
     { 
         path: '',
-        title: 'Equipos', 
+        title: 'Activos', 
         iconType: 'nzIcon', 
         icon: 'appstore',
         iconTheme: 'outline',
-        submenu: [],
-        user: true
+        submenu: [
+            { 
+                path: 'maintenances/areas',
+                title: 'Computo', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                role:[1,2]
+            }
+        ],
+        role:[1,2]
     }
 ]    

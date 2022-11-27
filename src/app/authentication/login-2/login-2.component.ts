@@ -20,7 +20,7 @@ export class Login2Component {
         private router: Router
         ) {
         this.loginForm = this.fb.group({
-            userName: [ null, [ Validators.required , Validators.email ] ],
+            userName: [ null, [ Validators.required , Validators.minLength(8) ] ],
             password: [ null, [ Validators.required ] ]
         });
     }

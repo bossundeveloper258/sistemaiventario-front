@@ -11,17 +11,17 @@
                         <p class="m-b-30">Ingrese su credencial para obtener acceso</p>
                         <form nz-form [formGroup]="loginForm" nzLayout="vertical" class="login-form" (ngSubmit)="submitForm()">
                             <nz-form-item>
-                                <nz-form-label nzRequired nzFor="userName">Email</nz-form-label>
-                                <nz-form-control nzErrorTip="Please input your username!" [nzErrorTip]="errorUser">
+                                <nz-form-label nzRequired nzFor="userName">GPID</nz-form-label>
+                                <nz-form-control [nzErrorTip]="errorUser">
                                     <nz-input-group >
-                                        <input type="text" nz-input formControlName="userName" placeholder="Username">
+                                        <input type="text" nz-input formControlName="userName" placeholder="GPID">
                                     </nz-input-group>
                                     <ng-template #errorUser let-control>
                                         <ng-container *ngIf="control.hasError('required')">
                                             Este campo es requerido.
                                         </ng-container>
-                                        <ng-container *ngIf="control.hasError('email')">
-                                          La entrada no es válida Correo electrónico
+                                        <ng-container *ngIf="control.hasError('minlength')">
+                                            Minimo 8 digitos
                                         </ng-container>
                                     </ng-template>
                                 </nz-form-control>

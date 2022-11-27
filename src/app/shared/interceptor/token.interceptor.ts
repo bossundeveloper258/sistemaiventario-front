@@ -35,10 +35,13 @@ export class JwtInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(
             catchError(error => {
-                // this.storageService.removeUser();
-                // this.router.navigate(['/auth/login'], {
-                //     queryParams: {},
-                // });
+                
+                if (error instanceof HttpErrorResponse  &&  (error.status === 401 || error.status === 0) ){
+                    this.storageService.removeUser();
+                    this.router.navigate(['/auth/login'], {
+                        queryParams: {},
+                    });
+                }
                 // if (error instanceof HttpErrorResponse  &&  (error.status === 401 || error.status === 0) ) {
         
                 //   return this.handle401Error(request, next);

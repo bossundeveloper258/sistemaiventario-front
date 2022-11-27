@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTES } from './side-nav-routes.config';
 import { ThemeConstantService } from '../../services/theme-constant.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
     selector: 'app-sidenav',
@@ -13,8 +14,14 @@ export class SideNavComponent{
     isFolded : boolean;
     isSideNavDark : boolean;
     isExpand : boolean;
+    userCurrent: any;
 
-    constructor( private themeService: ThemeConstantService) {}
+    constructor( 
+        private themeService: ThemeConstantService,
+        private storageService: StorageService
+        ) {
+            this.userCurrent =  JSON.parse(this.storageService.getUser());
+        }
 
     ngOnInit(): void {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
