@@ -18,6 +18,13 @@ const routes: Routes = [
         data: {
             headerDisplay: "none"
         }
+    },
+    {
+        path: 'edit/:id',
+        component: ComputerFormComponent,
+        data: {
+            headerDisplay: "none"
+        }
     }
 ];
 

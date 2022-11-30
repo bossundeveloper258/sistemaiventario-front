@@ -6,7 +6,7 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 import { registerLocaleData, PathLocationStrategy, LocationStrategy } from '@angular/common';
 import en from '@angular/common/locales/en';
-
+import es from '@angular/common/locales/es';
 import { AppRoutingModule } from './app-routing.module';
 import { TemplateModule } from './shared/template/template.module';
 
@@ -17,9 +17,9 @@ import { FullLayoutComponent } from './layouts/full-layout/full-layout.component
 import { ThemeConstantService } from './shared/services/theme-constant.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './shared/interceptor/token.interceptor';
-
+import { LOCALE_ID } from '@angular/core';
 registerLocaleData(en);
-
+registerLocaleData(es);
 @NgModule({
     declarations: [
         AppComponent,
@@ -37,7 +37,19 @@ registerLocaleData(en);
     providers: [
         { 
             provide: NZ_I18N,
-            useValue: es_ES, 
+            // useValue: en_US,
+            useFactory: (localId: string) => {
+                switch (localId) {
+                  case 'en':
+                    return en_US;
+                  /** keep the same with angular.json/i18n/locales configuration **/
+                  case 'es':
+                    return es_ES;
+                  default:
+                    return en_US;
+                }
+            },
+            deps: [LOCALE_ID]
         },
         {
             provide: LocationStrategy, 

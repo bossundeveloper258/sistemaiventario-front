@@ -19,18 +19,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let b of computersTable.data">
-            <td>{{b.name}}</td>
-            <td>{{b.name}}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td>{{b.name }}</td>
-            <td [nzAlign]="'center'">
-              <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
+          <tr *ngFor="let c of computersTable.data">
+            <td>{{c.type.description}}</td>
+            <td>{{c.brand.description}}</td>
+            <td>{{c.model.description }}</td>
+            <td>{{c.number_serie ?? '' }}</td>
+            <td>{{c.date_start_guarantee }}</td>
+            <td>{{c.date_exp_guarantee }}</td>
+            <td>{{c.ceco.name }}</td>
+            <td>{{c.employee.name }}</td>
+            <td>{{c.status.description }}</td>
+            <td nzRight [nzAlign]="'center'">
+              <a [routerLink]="'edit/'+c.id"> <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;"></span></a>
             </td>
           </tr>
         </tbody>

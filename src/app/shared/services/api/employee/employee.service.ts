@@ -47,4 +47,12 @@ export class EmployeeService {
     url = stringformat(url);
     return this.httpService.put<any>( url , body );
   }
+
+  public search( cecoId: number ): Observable<any>
+  {
+    let url = this.basicUrl + '/search?cost_center={0}';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url, cecoId);
+    return this.httpService.get<any>( url );
+  }
 }
