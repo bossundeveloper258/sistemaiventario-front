@@ -6,6 +6,7 @@ import { FormValidatorCustom } from 'src/app/shared/utility/formValidation';
 import { validForm } from 'src/app/shared/utility/functions';
 import { Observable } from 'rxjs';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-users',
@@ -19,6 +20,8 @@ export class UsersComponent implements OnInit {
   titleModal: string;
   validateForm: FormGroup;
   editFrom: boolean = false;
+
+  fileList1: NzUploadFile[] = []
 
   constructor(
     private usersService: UsersService,

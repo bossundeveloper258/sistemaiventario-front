@@ -55,4 +55,12 @@ export class CostcenterService {
     url = stringformat(url, areaId);
     return this.httpService.get<any>( url );
   }
+
+  public updateStatus(body: any, id: number ): Observable<any>
+  {
+    let url = this.basicUrl + '/' + id.toString() + '/status';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url);
+    return this.httpService.put<any>( url , body );
+  }
 }

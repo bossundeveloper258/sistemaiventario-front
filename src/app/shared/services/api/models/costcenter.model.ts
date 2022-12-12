@@ -12,6 +12,7 @@ export class CostCenterModel{
     sede_id: number;
     area: AreaModel;
     area_id: number;
+    status: boolean;
 }
 export class CostCenterModelFindAll{
     data: Array<CostCenterModel>;

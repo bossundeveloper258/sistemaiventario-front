@@ -48,11 +48,19 @@ export class AreaService {
     return this.httpService.put<any>( url , body );
   }
 
-  public search( sedeId: number ): Observable<any>
+  public search( businessId: number , status: number = 1 ): Observable<any>
   {
-    let url = this.basicUrl + '/search?sede={0}';
+    let url = this.basicUrl + '/search?business={0}&status={1}';
     // url = stringformat(url, pageIndex, pageSize, pageSort);
-    url = stringformat(url, sedeId);
+    url = stringformat(url, businessId, status);
     return this.httpService.get<any>( url );
+  }
+
+  public updateStatus(body: any, id: number): Observable<any>
+  {
+    let url = this.basicUrl + '/' + id.toString() + '/status';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url);
+    return this.httpService.put<any>( url , body );
   }
 }

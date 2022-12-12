@@ -10,6 +10,7 @@ export class SedeModel{
     business_id: number;
     business: BusinessModel;
     sede_type: ParameterModel;
+    status: boolean;
 }
 export class SedeModelFindAll{
     data: Array<SedeModel>;

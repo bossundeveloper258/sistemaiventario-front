@@ -36,7 +36,7 @@ export class AreaComponent implements OnInit {
     this.validateForm = this.fb.group({
       id: [null],
       name: [null, [ Validators.required]],
-      sede_id: [null, [Validators.required]],
+      // sede_id: [null, [Validators.required]],
       business_id: [null, [Validators.required]],
     },
     [ ]);
@@ -54,7 +54,6 @@ export class AreaComponent implements OnInit {
     this.validateForm.patchValue({
       name: "",
       address: "",
-      sede_id: null,
       business_id: null
     });
 
@@ -68,7 +67,6 @@ export class AreaComponent implements OnInit {
         this.validateForm.patchValue({
           id: res.id,
           name: res.name,
-          sede_id: res.sede_id,
           business_id: res.business_id
         });
         this.editFrom = true;
@@ -80,8 +78,8 @@ export class AreaComponent implements OnInit {
     return {
       id: this.validateForm.get("id").value,
       name: this.validateForm.get("name").value,
-      sede_id: this.validateForm.get("sede_id").value,
       business_id: this.validateForm.get("business_id").value,
+      sede_id: null
     }
   }
 
@@ -125,10 +123,16 @@ export class AreaComponent implements OnInit {
   }
 
   public onChangeBusiness(ev: any): void {
-    this.sedeService.search( this.validateForm.get('business_id').value ).subscribe(
+    this.sedeService.search( this.validateForm.get('business_id').value , 1 ).subscribe(
       (res) => {
         this.sedeList = res.data;
       }
+    )
+  }
+
+  public onChangeStatus(status: any ,  id: number):void {
+    this.areaService.updateStatus( { status } , id).subscribe(
+      (res) => {}
     )
   }
 

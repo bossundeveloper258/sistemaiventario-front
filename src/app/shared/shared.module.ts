@@ -16,6 +16,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 const antdModule = [
     NzButtonModule,
@@ -28,7 +29,8 @@ const antdModule = [
     NzFormModule,
     NzInputModule,
     NzSelectModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzUploadModule
 ]
 
 @NgModule({

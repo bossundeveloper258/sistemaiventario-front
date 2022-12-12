@@ -47,4 +47,12 @@ export class ComputersService {
     url = stringformat(url);
     return this.httpService.put<any>( url , body );
   }
+
+  public updateStatus(body: any, id: number ): Observable<any>
+  {
+    let url = this.basicUrl + '/' + id.toString() + '/status';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url);
+    return this.httpService.put<any>( url , body );
+  }
 }

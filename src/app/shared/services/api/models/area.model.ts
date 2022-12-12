@@ -8,6 +8,7 @@ export class AreaModel{
     business_id: number;
     business: BusinessModel;
     sede: SedeModel;
+    status: boolean;
 }
 export class AreaModelFindAll{
     data: Array<AreaModel>;

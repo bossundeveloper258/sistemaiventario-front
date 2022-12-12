@@ -8,6 +8,19 @@
     <input nz-input formControlName="id" type="hidden" id="id">
     <!-- input -->
     <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="gpid" nzRequired>GPID</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorGPID">
+        <input nz-input formControlName="gpid" type="text" id="gpid">
+        <ng-template #errorGPID let-control>
+          <ng-container *ngIf="control.hasError('required')">¡Este campo es requerido!</ng-container>
+          <ng-container *ngIf="control.hasError('minlength')">
+            Minimo 8 digitos
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item >
+    <!-- input -->
+    <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="name" nzRequired>Nombre</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
         <input nz-input formControlName="name" type="text" id="name">
@@ -26,19 +39,7 @@
         </ng-template>
       </nz-form-control>
     </nz-form-item >
-    <!-- input -->
-    <nz-form-item>
-      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="gpid" nzRequired>GPID</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorGPID">
-        <input nz-input formControlName="gpid" type="text" id="gpid">
-        <ng-template #errorGPID let-control>
-          <ng-container *ngIf="control.hasError('required')">¡Este campo es requerido!</ng-container>
-          <ng-container *ngIf="control.hasError('minlength')">
-            Minimo 8 digitos
-          </ng-container>
-        </ng-template>
-      </nz-form-control>
-    </nz-form-item >
+    
     <!-- input -->
     <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="password" [nzRequired]="!editFrom">Contraseña</nz-form-label>
@@ -59,6 +60,24 @@
         </ng-template>
       </nz-form-control>
     </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="password" >Avatar</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Este campo es requerido.">
+        <nz-upload
+            nzListType="picture"
+            [(nzFileList)]="fileList1"
+          >
+          <button nz-button>
+            <span nz-icon nzType="upload"></span>
+            Subir Imagen
+          </button>
+        </nz-upload>
+
+      </nz-form-control>
+    </nz-form-item >
+
   </form>
   </ng-container>
 </nz-modal>

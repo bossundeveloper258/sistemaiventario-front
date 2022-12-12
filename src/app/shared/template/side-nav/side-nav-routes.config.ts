@@ -24,18 +24,9 @@ export const ROUTES: SideNavInterface[] = [
                 iconTheme: 'outline',
                 submenu: [],
                 role:[1]
-            },
-            { 
-                path: 'maintenances/employees',
-                title: 'Usuarios', 
-                iconType: '', 
-                icon: '',
-                iconTheme: 'outline',
-                submenu: [],
-                role:[1,2]
             }
         ],
-        role:[1,2]
+        role:[1]
     },
     {
         path: '',
@@ -79,9 +70,18 @@ export const ROUTES: SideNavInterface[] = [
                 iconTheme: 'outline',
                 submenu: [],
                 role:[1]
+            },
+            { 
+                path: 'maintenances/employees',
+                title: 'Empleados', 
+                iconType: '', 
+                icon: '',
+                iconTheme: 'outline',
+                submenu: [],
+                role:[1,2]
             }
         ],
-        role:[1]
+        role:[1,2]
     },
     { 
         path: '',

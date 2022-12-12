@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { forkJoin, Observable } from 'rxjs';
+import { AreaService } from 'src/app/shared/services/api/area/area.service';
 import { CostcenterService } from 'src/app/shared/services/api/costcenter/costcenter.service';
 import { EmployeeService } from 'src/app/shared/services/api/employee/employee.service';
+import { AreaModel } from 'src/app/shared/services/api/models/area.model';
 import { CostCenterModel } from 'src/app/shared/services/api/models/costcenter.model';
 import { EmployeeModel } from 'src/app/shared/services/api/models/employee.model';
 import { constants } from 'src/app/shared/utility/constants';
@@ -20,6 +22,7 @@ export class EmployeeComponent implements OnInit {
   titleModal: string;
   validateForm: FormGroup;
   editFrom: boolean = false;
+  areaList: Array<AreaModel> = [];
   costCenterList: Array<CostCenterModel> = [];
 
   constant = constants;
@@ -27,7 +30,8 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
-    private costcenterService: CostcenterService
+    private costcenterService: CostcenterService,
+    private areaService: AreaService,
   ) {
     this.validateForm = this.fb.group({
       id: [null],
@@ -35,6 +39,7 @@ export class EmployeeComponent implements OnInit {
       name: [null, [ Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       job: [null, [ Validators.required]],
+      area_id: [null, [ Validators.required]],
       cost_center_id: [null, [ Validators.required]],
     },
     [ ]);
@@ -54,6 +59,7 @@ export class EmployeeComponent implements OnInit {
       name: "",
       email: "",
       job: "",
+      area_id: "",
       cost_center_id: null
     });
   }
@@ -69,6 +75,7 @@ export class EmployeeComponent implements OnInit {
           name: res.name,
           email: res.email,
           job: res.job,
+          area_id: res.area_id,
           cost_center_id: res.cost_center_id
         });
         this.editFrom = true;
@@ -83,6 +90,7 @@ export class EmployeeComponent implements OnInit {
       name: this.validateForm.get("name").value,
       email: this.validateForm.get("email").value,
       job: this.validateForm.get("job").value,
+      area_id: this.validateForm.get("area_id").value,
       cost_center_id: this.validateForm.get("cost_center_id").value
     }
   }
@@ -118,11 +126,25 @@ export class EmployeeComponent implements OnInit {
 
   private loadOptions(): void{
     forkJoin([
-      this.costcenterService.getAll()
+      this.areaService.getAll()
     ]).subscribe(
       (responses) => {
-        this.costCenterList = responses[0].data;
+        this.areaList = responses[0].data;
       }
+    )
+  }
+
+  public onChangeArea(ev: any):void {
+    this.costcenterService.search( this.validateForm.get('area_id').value ).subscribe(
+      (res) => {
+        this.costCenterList = res.data;
+      }
+    )
+  }
+
+  public onChangeStatus(status: any ,  id: number):void {
+    this.employeeService.updateStatus( { status } , id).subscribe(
+      (res) => {}
     )
   }
 

@@ -48,4 +48,20 @@ export class BusinessService {
     return this.httpService.put<any>( url , body );
   }
 
+  public updateStatus(body: any, id: number ): Observable<any>
+  {
+    let url = this.basicUrl + '/' + id.toString() + '/status';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url);
+    return this.httpService.put<any>( url , body );
+  }
+
+  public search( status: number = 1): Observable<any>
+  {
+    let url = this.basicUrl + '/search?status={0}';
+    // url = stringformat(url, pageIndex, pageSize, pageSort);
+    url = stringformat(url, status);
+    return this.httpService.get<any>( url );
+  }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { BusinessService } from 'src/app/shared/services/api/business/business.service';
+import { BusinessModel } from 'src/app/shared/services/api/models/business.model';
 import { constants } from 'src/app/shared/utility/constants';
 import { validForm } from 'src/app/shared/utility/functions';
 
@@ -12,7 +13,7 @@ import { validForm } from 'src/app/shared/utility/functions';
 })
 export class BusinessesComponent implements OnInit {
 
-  businessSet: Array<any> = [];
+  businessSet: Array<BusinessModel> = [];
   isVisible: boolean = false;
   titleModal: string;
   validateForm: FormGroup;
@@ -100,6 +101,12 @@ export class BusinessesComponent implements OnInit {
       (res) => {
         this.businessSet = res.data
       }
+    )
+  }
+
+  public onChangeStatus(status: any ,  id: number):void {
+    this.businessService.updateStatus( { status } , id).subscribe(
+      (res) => {}
     )
   }
 }

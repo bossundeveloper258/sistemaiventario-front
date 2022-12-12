@@ -67,6 +67,7 @@
             <th>Empresa</th>
             <th>Sede</th>
             <th>Area</th>
+            <th>Estado</th>
             <th [nzAlign]="'center'">Acción</th>
           </tr>
         </thead>
@@ -76,7 +77,8 @@
             <td>{{b.name}}</td>
             <td>{{b.business.name}}</td>
             <td>{{b.sede.name }}</td>
-            <td>{{b.area.name }}</td>
+            <td>{{b?.area?.name }}</td>
+            <td> <nz-switch [(ngModel)]="b.status"(ngModelChange)="onChangeStatus($event , b.id)" ></nz-switch> </td>
             <td [nzAlign]="'center'">
               <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
             </td>

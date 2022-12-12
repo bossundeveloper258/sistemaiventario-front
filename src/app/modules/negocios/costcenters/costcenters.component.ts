@@ -131,7 +131,7 @@ export class CostcentersComponent implements OnInit {
 
   private loadOptions(): void{
     forkJoin([
-      this.businessService.getAll()
+      this.businessService.search()
     ]).subscribe(
       (responses) => {
         this.businessList = responses[0].data;
@@ -145,13 +145,21 @@ export class CostcentersComponent implements OnInit {
         this.sedeList = res.data;
       }
     )
-  }
 
-  public onChangeSede(ev: any): void{
-    this.areaService.search( this.validateForm.get('sede_id').value ).subscribe(
+    this.areaService.search( this.validateForm.get('business_id').value ).subscribe(
       (res) => {
         this.areaList = res.data;
       }
+    )
+  }
+
+  public onChangeSede(ev: any): void{
+    
+  }
+
+  public onChangeStatus(status: any ,  id: number):void {
+    this.costcenterService.updateStatus( { status } , id).subscribe(
+      (res) => {}
     )
   }
 

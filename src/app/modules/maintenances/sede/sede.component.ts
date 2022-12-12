@@ -121,13 +121,19 @@ export class SedeComponent implements OnInit {
   private loadOptions(): void{
     forkJoin([
       this.parametersService.search(2),
-      this.businessService.getAll()
+      this.businessService.search()
     ]).subscribe(
       (responses) => {
 
         this.sedeTypes = responses[0].data;
         this.businessList = responses[1].data;
       }
+    )
+  }
+
+  public onChangeStatus(status: any ,  id: number):void {
+    this.sedeService.updateStatus( { status } , id).subscribe(
+      (res) => {}
     )
   }
 

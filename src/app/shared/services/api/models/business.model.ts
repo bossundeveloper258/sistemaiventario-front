@@ -3,6 +3,7 @@ export class BusinessModel{
     ruc: string;
     name: string;
     address: string;
+    status: boolean;
 }
 export class BusinessModelFindAll{
     data: Array<BusinessModel>;
