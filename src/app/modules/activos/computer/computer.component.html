@@ -1,8 +1,15 @@
 <ng-template #extraTemplate>
-    <a nz-button nzType="primary" [routerLink]="'new'">Nuevo</a>
+    <a nz-button nzType="primary" [routerLink]="'new'"><span nz-icon nzType="plus-circle" nzTheme="outline"></span> Nuevo</a>
 </ng-template>
 
-<nz-card nzTitle="Lista de Computos" [nzExtra]="extraTemplate">
+<nz-card nzTitle="Lista de Activos" [nzExtra]="extraTemplate">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" class="mb-5 w-50">
+      <input type="text" nz-input [(ngModel)]="search" placeholder="Buscar por GIPD" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" (click)="onSearch()" nzSearch><span nz-icon nzType="search"></span></button>
+    </ng-template>
+
     <nz-table #computersTable [nzData]="computersSet" [nzScroll]="{ x: '1800px' }">
         <thead>
           <tr>
@@ -24,7 +31,7 @@
             <th class="warning">Compu. Name</th>
             <th class="warning">SO</th>
 
-            <th>ESTADO</th>
+            <th class="redd">ESTADO</th>
             <th nzRight [nzAlign]="'center'" [nzWidth]="'100px'">Acción</th>
           </tr>
         </thead>

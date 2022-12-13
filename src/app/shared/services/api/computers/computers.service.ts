@@ -17,9 +17,9 @@ export class ComputersService {
   ) { }
 
   // pageIndex: number, pageSize: number , pageSort: string
-  public getAll(): Observable<ComputerModelFindAll>
+  public getAll(gpid: string = ""): Observable<ComputerModelFindAll>
   {
-    let url = this.basicUrl + '/find-all';
+    let url = this.basicUrl + '/find-all?gpid='+gpid;
     // url = stringformat(url, pageIndex, pageSize, pageSort);
     url = stringformat(url);
     return this.httpService.get<ComputerModelFindAll>( url );

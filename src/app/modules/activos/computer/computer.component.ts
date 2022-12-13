@@ -9,7 +9,8 @@ import { ComputersService } from 'src/app/shared/services/api/computers/computer
 export class ComputerComponent implements OnInit {
 
   computersSet: Array<any> = [];
-   
+  search: string = "";
+
   constructor(
     private computersService: ComputersService,
   ) { }
@@ -18,10 +19,15 @@ export class ComputerComponent implements OnInit {
     this.listComputer();
   }
 
-  listComputer():void {
-    this.computersService.getAll().subscribe( (res) => {
+  listComputer(  ):void {
+    this.computersSet = [];
+    this.computersService.getAll( this.search ).subscribe( (res) => {
       this.computersSet = res.data
     })
+  }
+
+  onSearch(): void{
+    this.listComputer();
   }
 
 }
