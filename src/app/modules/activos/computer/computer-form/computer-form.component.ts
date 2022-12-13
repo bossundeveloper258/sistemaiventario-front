@@ -70,7 +70,7 @@ export class ComputerFormComponent implements OnInit {
       type_id: [null, [ Validators.required]],
       brand_id: [null, [ Validators.required]],
       model_id: [null, [ Validators.required]],
-      number_serie: [null ],
+      number_serie: [null, [ Validators.required] ],
       number_inventory: [null ],
       act_fijo: [null ],
       name: [null, [ Validators.required]],

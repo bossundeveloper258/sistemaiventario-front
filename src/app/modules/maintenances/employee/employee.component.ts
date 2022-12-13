@@ -9,6 +9,8 @@ import { AreaModel } from 'src/app/shared/services/api/models/area.model';
 import { BusinessModel } from 'src/app/shared/services/api/models/business.model';
 import { CostCenterModel } from 'src/app/shared/services/api/models/costcenter.model';
 import { EmployeeModel } from 'src/app/shared/services/api/models/employee.model';
+import { SedeModel } from 'src/app/shared/services/api/models/sede.model';
+import { SedeService } from 'src/app/shared/services/api/sede/sede.service';
 import { constants } from 'src/app/shared/utility/constants';
 import { validForm } from 'src/app/shared/utility/functions';
 
@@ -27,6 +29,7 @@ export class EmployeeComponent implements OnInit {
   areaList: Array<AreaModel> = [];
   costCenterList: Array<CostCenterModel> = [];
   businessList: Array<BusinessModel> = [];
+  sedeList: Array<SedeModel> = [];
   constant = constants;
   
   constructor(
@@ -35,6 +38,7 @@ export class EmployeeComponent implements OnInit {
     private employeeService: EmployeeService,
     private costcenterService: CostcenterService,
     private areaService: AreaService,
+    private sedeService: SedeService
   ) {
     this.validateForm = this.fb.group({
       id: [null],
@@ -43,6 +47,7 @@ export class EmployeeComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       job: [null, [ Validators.required]],
       business_id: [null, [ Validators.required]],
+      sede_id: [null, [ Validators.required]],
       area_id: [null, [ Validators.required]],
       cost_center_id: [null, [ Validators.required]],
     },
@@ -55,7 +60,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   public onNew(): void{
-    this.titleModal = "Nuevo Usuario";
+    this.titleModal = "Nuevo Empleado";
     this.isVisible = true;
     this.validateForm.get("id").setValue(0);
     this.validateForm.patchValue({
@@ -65,6 +70,7 @@ export class EmployeeComponent implements OnInit {
       job: "",
       business_id: null,
       area_id: null,
+      sede_id: null,
       cost_center_id: null
     });
   }
@@ -72,7 +78,7 @@ export class EmployeeComponent implements OnInit {
   public onEdit(bId: number): void{
     this.employeeService.edit(bId).subscribe(
       (res) => {
-        this.titleModal = "Editar Usuario";
+        this.titleModal = "Editar Empleado";
         this.isVisible = true;
         this.validateForm.patchValue({
           id: res.id,
@@ -82,6 +88,7 @@ export class EmployeeComponent implements OnInit {
           job: res.job,
           business_id: res.business_id,
           area_id: res.area_id,
+          sede_id: res.sede_id,
           cost_center_id: res.cost_center_id
         });
         this.editFrom = true;
@@ -97,6 +104,7 @@ export class EmployeeComponent implements OnInit {
       email: this.validateForm.get("email").value,
       job: this.validateForm.get("job").value,
       business_id: this.validateForm.get("business_id").value,
+      sede_id: this.validateForm.get("sede_id").value,
       area_id: this.validateForm.get("area_id").value,
       cost_center_id: this.validateForm.get("cost_center_id").value
     }
@@ -156,7 +164,11 @@ export class EmployeeComponent implements OnInit {
   }
 
   public onChangeBusiness(ev: any): void {
-
+    this.sedeService.search( this.validateForm.get('business_id').value ).subscribe(
+      (res) => {
+        this.sedeList = res.data;
+      }
+    )
     this.areaService.search( this.validateForm.get('business_id').value ).subscribe(
       (res) => {
         this.areaList = res.data;
