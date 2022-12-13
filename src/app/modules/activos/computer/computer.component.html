@@ -4,10 +4,10 @@
 
 <nz-card nzTitle="Lista de Activos" [nzExtra]="extraTemplate">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" class="mb-5 w-50">
-      <input type="text" nz-input [(ngModel)]="search" placeholder="Buscar por GIPD" />
+      <input type="text" nz-input [(ngModel)]="search" (keyup.enter)="onSearch()" placeholder="Buscar por GIPD" />
     </nz-input-group>
     <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" (click)="onSearch()" nzSearch><span nz-icon nzType="search"></span></button>
+      <button nz-button nzType="primary" (click)="onSearch()"  nzSearch><span nz-icon nzType="search"></span></button>
     </ng-template>
 
     <nz-table #computersTable [nzData]="computersSet" [nzScroll]="{ x: '1800px' }">

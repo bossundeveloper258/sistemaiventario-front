@@ -31,7 +31,8 @@ export class EmployeeComponent implements OnInit {
   businessList: Array<BusinessModel> = [];
   sedeList: Array<SedeModel> = [];
   constant = constants;
-  
+  search: string = "";
+
   constructor(
     private fb: FormBuilder,
     private businessService: BusinessService,
@@ -132,7 +133,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   private listEmployees():void {
-    this.employeeService.getAll().subscribe(
+    this.employeeService.getAll( this.search ).subscribe(
       (res) => {
         this.employeeSet = res.data
       }
@@ -174,6 +175,10 @@ export class EmployeeComponent implements OnInit {
         this.areaList = res.data;
       }
     )
+  }
+
+  onSearch(): void{
+    this.listEmployees();
   }
 
 }

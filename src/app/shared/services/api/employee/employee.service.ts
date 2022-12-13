@@ -17,9 +17,9 @@ export class EmployeeService {
   ) { }
 
   // pageIndex: number, pageSize: number , pageSort: string
-  public getAll(): Observable<EmployeeModelFindAll>
+  public getAll( search: string = "" ): Observable<EmployeeModelFindAll>
   {
-    let url = this.basicUrl + '/find-all';
+    let url = this.basicUrl + '/find-all?gpid='+search;
     // url = stringformat(url, pageIndex, pageSize, pageSort);
     url = stringformat(url);
     return this.httpService.get<EmployeeModelFindAll>( url );
