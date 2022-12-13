@@ -26,7 +26,7 @@
             <td>{{c.number_serie ?? '' }}</td>
             <td>{{c.date_start_guarantee }}</td>
             <td>{{c.date_exp_guarantee }}</td>
-            <td>{{c.ceco?.code }}</td>
+            <td>{{'PE'+c.ceco?.code +'-'+c.ceco?.name}}</td>
             <td>{{c.employee?.name }}</td>
             <td>{{c.status.description }}</td>
             <td nzRight [nzAlign]="'center'">

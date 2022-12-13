@@ -199,7 +199,7 @@
                                     <nz-form-label nzRequired>Centro de Costo</nz-form-label>
                                     <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
                                         <nz-select name="select-validate" formControlName="ceco_id" (ngModelChange)="onChangeCostCenter($event)">
-                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of costCenterList"></nz-option>
+                                            <nz-option [nzValue]="s.id" [nzLabel]="'PE'+s.code + '-'+s.name" *ngFor="let s of costCenterList"></nz-option>
                                         </nz-select>
                                     </nz-form-control>
                                 </nz-form-item >

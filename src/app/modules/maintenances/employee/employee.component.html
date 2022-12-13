@@ -84,7 +84,7 @@
         <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="cost_center_id" nzRequired>Centro de Costo</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
             <nz-select name="select-validate" formControlName="cost_center_id">
-                <nz-option [nzValue]="s.id" [nzLabel]="s.code + '-'+s.name" *ngFor="let s of costCenterList"></nz-option>
+                <nz-option [nzValue]="s.id" [nzLabel]="'PE'+s.code + '-'+s.name" *ngFor="let s of costCenterList"></nz-option>
             </nz-select>
         </nz-form-control>
     </nz-form-item >
@@ -114,7 +114,7 @@
             <td>{{b.email}}</td>
             <td>{{b.job}}</td>
             <td>{{b?.area?.name}}</td>
-            <td>{{b.cost_center.name}}</td>
+            <td>{{'PE'+b.cost_center?.code +'-'+b.cost_center?.name}}</td>
             <td> <nz-switch [(ngModel)]="b.status"(ngModelChange)="onChangeStatus($event , b.id)" ></nz-switch> </td>
             <td [nzAlign]="'center'">
               <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;" (click)="onEdit(b.id)"></span>
