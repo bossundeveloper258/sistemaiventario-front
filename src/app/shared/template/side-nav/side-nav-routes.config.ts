@@ -33,7 +33,7 @@ export const ROUTES: SideNavInterface[] = [
         title: 'Negocios',
         iconType: 'nzIcon',
         iconTheme: 'outline',
-        icon: 'dashboard',
+        icon: 'home',
         submenu: [
             { 
                 path: 'maintenances/businesses',
@@ -87,7 +87,7 @@ export const ROUTES: SideNavInterface[] = [
         path: '',
         title: 'Activos', 
         iconType: 'nzIcon', 
-        icon: 'appstore',
+        icon: 'laptop',
         iconTheme: 'outline',
         submenu: [
             { 

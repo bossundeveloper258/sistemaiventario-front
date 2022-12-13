@@ -3,31 +3,52 @@
 </ng-template>
 
 <nz-card nzTitle="Lista de Computos" [nzExtra]="extraTemplate">
-    <nz-table #computersTable [nzData]="computersSet" [nzScroll]="{ x: '1400px' }">
+    <nz-table #computersTable [nzData]="computersSet" [nzScroll]="{ x: '1800px' }">
         <thead>
           <tr>
-            <th>Tipo</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Nº serie</th>
-            <th>Fec. de ini. garantia</th>
-            <th>Fec. de exp. garantia</th>
-            <th>CECO</th>
-            <th>Usuario</th>
-            <th>Estado</th>
+            <th class="personal_details">GPID</th>
+            <th class="personal_details">Display Name</th>
+            <th class="personal_details">Correo</th>
+            <th class="personal_details">Cargo</th>
+
+            <th class="empresa">Empresa</th>
+            <th class="empresa">Sede</th>
+            <th class="empresa">Area</th>
+            <th class="empresa">Codigo CC</th>
+
+            <th class="warning">Tipo</th>
+            <th class="warning">Marca</th>
+            <th class="warning">Modelo</th>
+            <th class="warning">Serie</th>
+            <th class="warning">N° Inventario</th>
+            <th class="warning">Compu. Name</th>
+            <th class="warning">SO</th>
+
+            <th>ESTADO</th>
             <th nzRight [nzAlign]="'center'" [nzWidth]="'100px'">Acción</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let c of computersTable.data">
-            <td>{{c.type?.description}}</td>
-            <td>{{c.brand?.description}}</td>
-            <td>{{c.model?.description }}</td>
-            <td>{{c.number_serie ?? '' }}</td>
-            <td>{{c.date_start_guarantee }}</td>
-            <td>{{c.date_exp_guarantee }}</td>
+
+            <td>{{c.employee?.gpid}}</td>
+            <td>{{c.employee?.name}}</td>
+            <td>{{c.employee?.email }}</td>
+            <td>{{c.employee?.job}}</td>
+
+            <td>{{c.business?.name}}</td>
+            <td>{{c.sede?.name}}</td>
+            <td>{{c.area?.name}}</td>
             <td>{{'PE'+c.ceco?.code +'-'+c.ceco?.name}}</td>
-            <td>{{c.employee?.name }}</td>
+
+            <td>{{c.type.description }}</td>
+            <td>{{c.brand.description }}</td>
+            <td>{{c.model.description }}</td>
+            <td>{{c.number_serie }}</td>
+            <td>{{c.number_inventory }}</td>
+            <td>{{c.name }}</td>
+            <td>{{c.so.description }}</td>
+
             <td>{{c.status.description }}</td>
             <td nzRight [nzAlign]="'center'">
               <a [routerLink]="'edit/'+c.id"> <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px;color: #52c41a;"></span></a>

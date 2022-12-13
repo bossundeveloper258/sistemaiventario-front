@@ -101,6 +101,7 @@
             <th>Nombre</th>
             <th>Email</th>
             <th>Cargo</th>
+            <th>Empresa</th>
             <th>Area</th>
             <th>Centro de Costo</th>
             <th>Estado</th>
@@ -113,6 +114,7 @@
             <td>{{b.name}}</td>
             <td>{{b.email}}</td>
             <td>{{b.job}}</td>
+            <td>{{b?.business?.name}}</td>
             <td>{{b?.area?.name}}</td>
             <td>{{'PE'+b.cost_center?.code +'-'+b.cost_center?.name}}</td>
             <td> <nz-switch [(ngModel)]="b.status"(ngModelChange)="onChangeStatus($event , b.id)" ></nz-switch> </td>
