@@ -1,4 +1,5 @@
 import { AreaModel } from "./area.model";
+import { BusinessModel } from "./business.model";
 import { CostCenterModel } from "./costcenter.model";
 
 export class EmployeeModel{
@@ -11,6 +12,8 @@ export class EmployeeModel{
     area: AreaModel;
     cost_center_id: number;
     cost_center: CostCenterModel;
+    business_id: number;
+    business: BusinessModel;
     status: boolean;
 }
 export class EmployeeModelFindAll{

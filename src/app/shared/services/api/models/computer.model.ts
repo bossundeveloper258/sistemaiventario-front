@@ -1,6 +1,9 @@
+import { AreaModel } from "./area.model";
+import { BusinessModel } from "./business.model";
 import { CostCenterModel } from "./costcenter.model";
 import { EmployeeModel } from "./employee.model";
 import { ParameterModel } from "./parameter.model";
+import { SedeModel } from "./sede.model";
 
 export class ComputerModel{
     type_id: number;
@@ -36,6 +39,12 @@ export class ComputerModel{
     supplier: ParameterModel;
     ceco_id: number;
     ceco: CostCenterModel;
+    area_id: number;
+    area: AreaModel;
+    business_id: number;
+    business: BusinessModel;
+    sede_id: number;
+    sede: SedeModel;
     employee_id: number;
     employee: EmployeeModel;
     user_id: number;

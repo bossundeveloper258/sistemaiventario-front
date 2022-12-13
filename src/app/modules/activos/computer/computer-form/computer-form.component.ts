@@ -76,9 +76,9 @@ export class ComputerFormComponent implements OnInit {
       name: [null, [ Validators.required]],
       so_id: [null, [ Validators.required]],
       cod_bitlocker: [null ],
-      processor: [null ],
-      ram: [null ],
-      hdd: [null ],
+      processor: ["" ],
+      ram: ["" ],
+      hdd: ["" ],
       date_start_guarantee: [null, [ Validators.required]],
       date_exp_guarantee: [null, [ Validators.required]],
       date_capital: [null, [ Validators.required]],
@@ -137,6 +137,10 @@ export class ComputerFormComponent implements OnInit {
       factura: this.validateForm.get("factura").value,
       amount: this.validateForm.get("amount").value,
       supplier_id: this.validateForm.get("supplier_id").value,
+
+      business_id: this.validateForm.get("business_id").value,
+      sede_id: this.validateForm.get("sede_id").value,
+      area_id: this.validateForm.get("area_id").value,
       ceco_id: this.validateForm.get("ceco_id").value,
       employee_id: this.validateForm.get("employee_id").value
     }
@@ -187,6 +191,9 @@ export class ComputerFormComponent implements OnInit {
         amount: res.amount,
         supplier_id: res.supplier_id,
         
+        business_id: res.business_id,
+        sede_id: res.sede_id,
+        area_id: res.area_id,
         ceco_id: res.ceco_id,
 
         employee_id: res.employee_id
@@ -222,14 +229,15 @@ export class ComputerFormComponent implements OnInit {
         this.sedeList = res.data;
       }
     )
-  }
-
-  public onChangeSede(ev: any): void {
-    this.areaService.search( this.validateForm.get('sede_id').value ).subscribe(
+    this.areaService.search( this.validateForm.get('business_id').value ).subscribe(
       (res) => {
         this.areaList = res.data;
       }
     )
+  }
+
+  public onChangeSede(ev: any): void {
+    
   }
 
   public onChangeArea(ev: any):void {

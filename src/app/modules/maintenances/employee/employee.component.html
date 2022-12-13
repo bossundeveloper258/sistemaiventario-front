@@ -51,6 +51,16 @@
 
     <!-- input -->
     <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="business_id" nzRequired>Empresa</nz-form-label>
+      <nz-form-control [nzSm]="18" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
+          <nz-select name="select-validate" formControlName="business_id" (ngModelChange)="onChangeBusiness($event)">
+              <nz-option [nzValue]="b.id" [nzLabel]="b.name" *ngFor="let b of businessList"></nz-option>
+          </nz-select>
+      </nz-form-control>
+    </nz-form-item >
+
+    <!-- input -->
+    <nz-form-item>
       <nz-form-label [nzSm]="10" [nzXs]="24" nzFor="cost_center_id" nzRequired>Area</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="constant.MESSAGES.REQUIRED">
         <nz-select name="select-validate" formControlName="area_id" (ngModelChange)="onChangeArea($event)">

@@ -3,302 +3,298 @@
         <div nz-row>
             <div nz-col nzSpan="12">
                 <div nz-row>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="type_id" nzRequired>Tipo</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="type_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of typeComputerList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="brand_id" nzRequired>Marca</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="brand_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of brandList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="model_id" nzRequired>Modelo</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="model_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of modelList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="name" nzRequired>Computer Name</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="name" type="text" id="name">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="so_id" nzRequired>Sistema Operativo</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="so_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of soList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="processor" >Procesador</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="processor" type="text" id="processor">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="cod_bitlocker" >Código BitLocker</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="cod_bitlocker" type="text" id="cod_bitlocker">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="status_id" nzRequired>Estado</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="status_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of statusList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="number_capex" >Nº Capex</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="number_capex" type="text" id="number_capex">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="name_capex" >NOMBRE CAPEX</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="name_capex" type="text" id="name_capex">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="pep_number" >Pep Numberr</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="pep_number" type="text" id="pep_number">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="factura" >Factura</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="factura" type="text" id="factura">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="amount" >Monto</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="amount" type="number" id="amount">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Datos de Equipo</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="type_id" nzRequired>Tipo</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="type_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of typeComputerList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="brand_id" nzRequired>Marca</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="brand_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of brandList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="name" nzRequired>Computer Name</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="name" type="text" id="name">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="model_id" nzRequired>Modelo</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="model_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of modelList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="so_id" nzRequired>Sistema Operativo</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="so_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of soList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="number_serie" >Nº Serie</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="number_serie" type="text" id="number_serie">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="status_id" nzRequired>Estado</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="status_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of statusList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="cod_bitlocker" >Código BitLocker</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="cod_bitlocker" type="text" id="cod_bitlocker">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Empleado asignado</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired>Empleados</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="employee_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of usersList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Garantía marca</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="date_start_guarantee" nzRequired>F. de inicio garantia</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-date-picker formControlName="date_start_guarantee" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="date_exp_guarantee" nzRequired>F. de expiracion garantia</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-date-picker formControlName="date_exp_guarantee" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Activos fijos</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="date_capital" nzRequired>Fecha capital</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-date-picker formControlName="date_capital" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="act_fijo" >Act.fijo</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="act_fijo" type="text" id="act_fijo">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="number_inventory" >Nº inventario</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="number_inventory" type="text" id="number_inventory">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    
                 </div>
             </div>
             <div nz-col nzSpan="12" class="px-4">
                 <div nz-row>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="number_serie" >Nº Serie</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="number_serie" type="text" id="number_serie">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="number_inventory" >Nº inventario</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="number_inventory" type="text" id="number_inventory">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="act_fijo" >Act.fijo</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="act_fijo" type="text" id="act_fijo">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="ram" >RAM</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="ram" type="text" id="ram">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="hdd" >HDD</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="hdd" type="text" id="hdd">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="date_start_guarantee" nzRequired>F. de inicio garantia</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-date-picker formControlName="date_start_guarantee" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="date_exp_guarantee" nzRequired>F. de expiracion garantia</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-date-picker formControlName="date_exp_guarantee" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="date_capital" nzRequired>Fecha capital</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-date-picker formControlName="date_capital" class="w-100" [nzFormat]="dateFormat"></nz-date-picker>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="solped" >SOLPED</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="solped" type="text" id="solped">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="oc" >OC</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="oc" type="text" id="oc">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="pe_migo" >PE (MIGO)</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <input nz-input formControlName="pe_migo" type="text" id="pe_migo">
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzFor="supplier_id" nzRequired>Proveedor</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="supplier_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of supplierList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Datos empresa equipo</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label >Empresa</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="business_id" (ngModelChange)="onChangeBusiness($event)">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of businessList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+        
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label >Sedes</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="sede_id" (ngModelChange)="onChangeSede($event)">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of sedeList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+        
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label >Area</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="area_id" (ngModelChange)="onChangeArea($event)">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of areaList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzRequired>Centro de Costo</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="ceco_id" (ngModelChange)="onChangeCostCenter($event)">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of costCenterList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    <fieldset nz-col nzSpan="24" class="p-2">
+                        <div nz-row class="p-3" style="border: 1px solid #d9d9d9;">
+                            <legend style="margin-top: -30px;background-color: #FFF;border-bottom: 0;">Datos compra</legend>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="number_capex" >Nº Capex</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="number_capex" type="text" id="number_capex">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="pep_number" >Pep Number</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="pep_number" type="text" id="pep_number">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="name_capex" >NOMBRE CAPEX</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="name_capex" type="text" id="name_capex">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="solped" >SOLPED</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="solped" type="text" id="solped">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="oc" >OC</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="oc" type="text" id="oc">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="pe_migo" >PE (MIGO)</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="pe_migo" type="text" id="pe_migo">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="factura" >Factura</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="factura" type="text" id="factura">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="amount" >Monto</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <input nz-input formControlName="amount" type="number" id="amount">
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                            
+                            <div nz-col nzSpan="24">
+                                <nz-form-item>
+                                    <nz-form-label nzFor="supplier_id" nzRequired>Proveedor</nz-form-label>
+                                    <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
+                                        <nz-select name="select-validate" formControlName="supplier_id">
+                                            <nz-option [nzValue]="s.id" [nzLabel]="s.description" *ngFor="let s of supplierList"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item >
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- {{ {{ {{ {{ {{ {} }} }} }} }} }} -->
+                    
+                    
                 </div>
             </div>
         </div>
-        <div nz-row>
-            <div nz-col nzSpan="24">
-                <hr>
-            </div>
-        </div>
-        <div nz-row>
-            <div nz-col nzSpan="12">
-                <div nz-row>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label >Empresa</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="business_id" (ngModelChange)="onChangeBusiness($event)">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of businessList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
 
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label >Sedes</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="sede_id" (ngModelChange)="onChangeSede($event)">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of sedeList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label >Area</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="area_id" (ngModelChange)="onChangeArea($event)">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of areaList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                </div>
-            </div>
-            <div nz-col nzSpan="12" class="px-4">
-                <div nz-row>
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzRequired>Centro de Costo</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="ceco_id" (ngModelChange)="onChangeCostCenter($event)">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of costCenterList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                    <div nz-col nzSpan="24">
-                        <nz-form-item>
-                            <nz-form-label nzRequired>Usuarios</nz-form-label>
-                            <nz-form-control [nzErrorTip]="constant.MESSAGES.REQUIRED">
-                                <nz-select name="select-validate" formControlName="employee_id">
-                                    <nz-option [nzValue]="s.id" [nzLabel]="s.name" *ngFor="let s of usersList"></nz-option>
-                                </nz-select>
-                            </nz-form-control>
-                        </nz-form-item >
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div nz-row>
+        <div nz-row style="padding-top: 4rem;">
             <div nz-col nzSpan="24" class="">
                 <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Guardar</button>
             </div>

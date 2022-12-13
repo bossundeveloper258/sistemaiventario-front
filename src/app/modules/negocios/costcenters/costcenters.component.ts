@@ -41,7 +41,6 @@ export class CostcentersComponent implements OnInit {
       id: [null],
       name: [null, [ Validators.required]],
       code: [null, [ Validators.required]],
-      sede_id: [null, [Validators.required]],
       business_id: [null, [Validators.required]],
       area_id: [null, [Validators.required]]
     },
@@ -61,7 +60,6 @@ export class CostcentersComponent implements OnInit {
       name: "",
       code: "",
       address: "",
-      sede_id: null,
       business_id: null,
       area_id: null
     });
@@ -77,8 +75,7 @@ export class CostcentersComponent implements OnInit {
           id: res.id,
           code: res.code,
           name: res.name,
-          sede_id: res.sede_id,
-          // business_id: res.business_id,
+          business_id: res.business_id,
           area_id: res.area_id
         });
         this.validateForm.get('business_id').setValue(res.business_id);
@@ -94,7 +91,7 @@ export class CostcentersComponent implements OnInit {
       id: this.validateForm.get("id").value,
       code: this.validateForm.get("code").value,
       name: this.validateForm.get("name").value,
-      sede_id: this.validateForm.get("sede_id").value,
+      sede_id: null,
       business_id: this.validateForm.get("business_id").value,
       area_id: this.validateForm.get("area_id").value,
     }

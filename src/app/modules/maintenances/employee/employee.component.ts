@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { forkJoin, Observable } from 'rxjs';
 import { AreaService } from 'src/app/shared/services/api/area/area.service';
+import { BusinessService } from 'src/app/shared/services/api/business/business.service';
 import { CostcenterService } from 'src/app/shared/services/api/costcenter/costcenter.service';
 import { EmployeeService } from 'src/app/shared/services/api/employee/employee.service';
 import { AreaModel } from 'src/app/shared/services/api/models/area.model';
+import { BusinessModel } from 'src/app/shared/services/api/models/business.model';
 import { CostCenterModel } from 'src/app/shared/services/api/models/costcenter.model';
 import { EmployeeModel } from 'src/app/shared/services/api/models/employee.model';
 import { constants } from 'src/app/shared/utility/constants';
@@ -24,11 +26,12 @@ export class EmployeeComponent implements OnInit {
   editFrom: boolean = false;
   areaList: Array<AreaModel> = [];
   costCenterList: Array<CostCenterModel> = [];
-
+  businessList: Array<BusinessModel> = [];
   constant = constants;
   
   constructor(
     private fb: FormBuilder,
+    private businessService: BusinessService,
     private employeeService: EmployeeService,
     private costcenterService: CostcenterService,
     private areaService: AreaService,
@@ -39,6 +42,7 @@ export class EmployeeComponent implements OnInit {
       name: [null, [ Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       job: [null, [ Validators.required]],
+      business_id: [null, [ Validators.required]],
       area_id: [null, [ Validators.required]],
       cost_center_id: [null, [ Validators.required]],
     },
@@ -59,7 +63,8 @@ export class EmployeeComponent implements OnInit {
       name: "",
       email: "",
       job: "",
-      area_id: "",
+      business_id: null,
+      area_id: null,
       cost_center_id: null
     });
   }
@@ -75,6 +80,7 @@ export class EmployeeComponent implements OnInit {
           name: res.name,
           email: res.email,
           job: res.job,
+          business_id: res.business_id,
           area_id: res.area_id,
           cost_center_id: res.cost_center_id
         });
@@ -90,6 +96,7 @@ export class EmployeeComponent implements OnInit {
       name: this.validateForm.get("name").value,
       email: this.validateForm.get("email").value,
       job: this.validateForm.get("job").value,
+      business_id: this.validateForm.get("business_id").value,
       area_id: this.validateForm.get("area_id").value,
       cost_center_id: this.validateForm.get("cost_center_id").value
     }
@@ -126,10 +133,10 @@ export class EmployeeComponent implements OnInit {
 
   private loadOptions(): void{
     forkJoin([
-      this.areaService.getAll()
+      this.businessService.search()
     ]).subscribe(
       (responses) => {
-        this.areaList = responses[0].data;
+        this.businessList = responses[0].data;
       }
     )
   }
@@ -145,6 +152,15 @@ export class EmployeeComponent implements OnInit {
   public onChangeStatus(status: any ,  id: number):void {
     this.employeeService.updateStatus( { status } , id).subscribe(
       (res) => {}
+    )
+  }
+
+  public onChangeBusiness(ev: any): void {
+
+    this.areaService.search( this.validateForm.get('business_id').value ).subscribe(
+      (res) => {
+        this.areaList = res.data;
+      }
     )
   }
 
